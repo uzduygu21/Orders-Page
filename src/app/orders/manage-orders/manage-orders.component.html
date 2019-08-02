@@ -1,0 +1,31 @@
+<app-panel-box>
+    <span panel-title>{{pageTitle}}</span>
+    <div panel-content>
+        <div>
+            <input type="text" class="form-control" placeholder="Filter By Order Type" [(ngModel)]="filterBy" />
+        </div>
+
+        <table class="table table-bordered" *ngIf="products && products.length">
+            <thead>
+                <tr>
+                    <th scope="col">Order#</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Vehicle</th>
+                    <th scope="col">Placed</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Total Amount</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of products | manageOrders:filterBy">
+                <tr>
+                    <td>{{item.orderNumber}}</td>
+                    <td>{{item.customer}}</td>
+                    <td>{{item.vehicle}}</td>
+                    <td>{{item.orderDate}}</td>
+                    <td>{{item.orderType}}</td>
+                    <td>{{item.TotalAmount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</app-panel-box>
